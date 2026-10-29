@@ -17,7 +17,10 @@ const renderTable = (dataArray) => {
 
     if (!dataArray || dataArray.length === 0) {
         const emptyRow = document.createElement('tr');
-        emptyRow.innerHTML = `<td colspan="4" style="text-align: center;">No student records found.</td>`;
+        emptyRow.innerHTML = 
+        `<td colspan="4" style="text-align: center;">
+        No student records found.
+        </td>`;
 
         studentTableBody.appendChild(emptyRow);
         return;
@@ -58,8 +61,12 @@ if (studentForm) {
         const inputRegex = /^[^<>]*$/;
 
         const studentData = {
-            firstName: capitalizeName(firstNameInput ? firstNameInput.value.trim() : ''),
-            lastName: capitalizeName(lastNameInput ? lastNameInput.value.trim() : ''),
+            firstName: capitalizeName(
+                firstNameInput ? firstNameInput.value.trim() : ''
+            ),
+            lastName: capitalizeName(
+                lastNameInput ? lastNameInput.value.trim() : ''
+            ),
             email: emailInput ? emailInput.value.trim() : ''
         };
 
@@ -70,7 +77,9 @@ if (studentForm) {
         }
 
         // Check if any field is empty
-        if (!studentData.firstName || !studentData.lastName || !studentData.email) {
+        if (!studentData.firstName || 
+            !studentData.lastName || 
+            !studentData.email) {
             alert('Please fill out all input fields');
             return;
         }
@@ -78,6 +87,7 @@ if (studentForm) {
         // Check if email is valid
         if (!emailRegex.test(studentData.email)) {
             alert('Please enter a valid email address');
+            return;
         }
 
         // Pass data to API function
