@@ -18,6 +18,16 @@ export function getStudentsAPI() {
 };
 
 export function addStudentAPI(firstName, lastName, email) {
+    const isDuplicate = mockStudentDb.some(
+        (student) =>
+            student.firstName.toLowerCase() === firstName.toLowerCase() &&
+            student.lastName.toLowerCase() === lastName.toLowerCase()
+    );
+
+    if (isDuplicate) {
+        return null;
+    }
+
     const newStudent = { 
         id: Date.now(), 
         firstName, 

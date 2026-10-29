@@ -61,6 +61,11 @@ if (studentForm) {
             studentData.email
         );
 
+        if (!newStudent) {
+            alert('This student already exists');
+            return;
+        }
+
         renderTable(localStudent);
         studentForm.reset();
     });
